@@ -1,10 +1,6 @@
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <iostream>
-#include "math.h"
+#include "boj1747.h"
 
-using namespace std;
+
 
 bool palindrome(int n) {
 	string temp1 = to_string(n);
@@ -31,7 +27,7 @@ bool check_prime(int n) {
 	return true;
 }
 
-int main() {
+void run1747() {
 	int num = 0;
 	cin >> num;
 
@@ -43,5 +39,4 @@ int main() {
 		}
 		num++;
 	}
-	return 0;
 }
