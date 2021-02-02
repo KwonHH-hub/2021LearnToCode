@@ -1,6 +1,4 @@
 #include "boj14620.h"
-// 같은 줄에 같은 가격이 존재하면 못 찾는 문제가 있음...
-// 근데 어차피 주변을 1000인지 확인하고, 아닌 경우에만 선정하는데 문제될게 있나..?
 using namespace std;
 vector<vector<int>> cost(vector<vector<int>> m, int n) {
 	vector<vector<int>>cost;
