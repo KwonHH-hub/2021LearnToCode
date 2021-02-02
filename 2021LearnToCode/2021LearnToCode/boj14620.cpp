@@ -29,6 +29,7 @@ vector<vector<int>> cost(vector<vector<int>> m, int n) {
 int find_appordable(vector<vector<int>> c) {
 	vector<int> srt;
 	int times = 0;
+	int srt_idx = 0;
 	int c_idx = 0;
 	int result = 0;
 	for (int i = 1; i < c.size() - 1; i++) {
@@ -39,24 +40,21 @@ int find_appordable(vector<vector<int>> c) {
 	sort(srt.begin(), srt.end());
 
 	for (int i = 1; i < c.size() - 1; i++) {
-		if (times == 3) break;
-		if (find(c[i].begin(), c[i].end(), srt[times]) != c[i].end()) {
-			c_idx = find(c[i].begin(), c[i].end(), srt[times]) - c[i].begin();
-			if (c[i][c_idx - 1] == 1500) continue;
-			if (c[i][c_idx + 1] == 1500) continue;
-			if (c[i - 1][c_idx] == 1500) continue;
-			if (c[i + 1][c_idx] == 1500) continue;
-			else {
-				result += srt[times];
-				times++;
-
-				c[i][c_idx] = 1500;
-				c[i][c_idx - 1] = 1500;
-				c[i][c_idx + 1] = 1500;
-				c[i - 1][c_idx] = 1500;
-				c[i + 1][c_idx] = 1500;
+		if(times == 3) break;
+		for(int j = 1; j < c.size() - 1; j ++){
+			if(srt[srt_idx] == c[i][j]){
+				if((c[i-1][j] != 1500) && (c[i+1][j] != 1500) && (c[i][j-1] != 1500) && (c[i][j+1] != 1500)){
+					result += c[i][j];
+					c[i][j] = 1500;
+					c[i-1][j] = 1500;
+					c[i+1][j] = 1500;
+					c[i][j-1] = 1500;
+					c[i][j+1] = 1500;
+					times ++;
+				}
 			}
 		}
+		srt_idx++;
 	}
 	return result;
 }
