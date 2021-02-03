@@ -39,22 +39,23 @@ int find_appordable(vector<vector<int>> c) {
 	}
 	sort(srt.begin(), srt.end());
 
-	for (int i = 1; i < c.size() - 1; i++) {
-		if(times == 3) break;
-		for(int j = 1; j < c.size() - 1; j ++){
-			if(srt[srt_idx] == c[i][j]){
-				if((c[i-1][j] != 1500) && (c[i+1][j] != 1500) && (c[i][j-1] != 1500) && (c[i][j+1] != 1500)){
-					result += c[i][j];
-					c[i][j] = 1500;
-					c[i-1][j] = 1500;
-					c[i+1][j] = 1500;
-					c[i][j-1] = 1500;
-					c[i][j+1] = 1500;
-					times ++;
+	while(times != 3){
+		for (int i = 1; i < c.size() - 1; i++) {
+			for(int j = 1; j < c.size() - 1; j ++){
+				if(srt[srt_idx] == c[i][j]){
+					if((c[i-1][j] != 1500) && (c[i+1][j] != 1500) && (c[i][j-1] != 1500) && (c[i][j+1] != 1500)){
+						result += c[i][j];
+					
+						c[i][j] = 1500;
+						c[i-1][j] = 1500;
+						c[i+1][j] = 1500;
+						c[i][j-1] = 1500;
+						c[i][j+1] = 1500;
+						times ++;
+					}
 				}
 			}
-		}
-		srt_idx++;
+		}srt_idx++;
 	}
 	return result;
 }
