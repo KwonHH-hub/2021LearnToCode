@@ -51,7 +51,8 @@ int find_appordable(vector<vector<int>> c) {
 						c[i+1][j] = 1500;
 						c[i][j-1] = 1500;
 						c[i][j+1] = 1500;
-						times ++;
+						times++;
+						break;
 					}
 				}
 			}
